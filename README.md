@@ -1,7 +1,7 @@
 # Advertisement Pricing Calculator
 
 ## Install packages
-Download the source do the following steps
+Download the source and do the following steps
 1. npm install angular-cli@latest -g
 2. npm install 
 
