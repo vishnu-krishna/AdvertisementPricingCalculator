@@ -1,3 +1,86 @@
-<h1>
-  {{title}}
-</h1>
+<section id="adv">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="form-wrap">
+          <h1>{{title}}</h1>
+          <form role="form" method="post" id="adv-form" #adform="ngForm">
+            <div class="form-group">
+              <label for="customer">Customer name:</label>
+              <select class="form-control" [(ngModel)]="customerName" name="customer" required id="customer">
+                  <option *ngFor="let customer of customerList">
+                    {{customer.name}}
+                  </option>
+                </select>
+            </div>
+            <div class="form-group">
+              <label for="ad">Type of advertisement:</label>
+              <select class="form-control" [(ngModel)]="adName" name="adType" required id="advertisement">
+                  <option *ngFor="let ad of adList">
+                    {{ad.name}}
+                  </option>
+                </select>
+            </div>
+          </form>
+          <!-- Show Table which contains the list of Advertisement added -->
+          <section *ngIf="customerAdvertisementList.length > 0">
+            <div class="panel panel-default">
+              <!-- Default panel contents -->
+              <div class="panel-heading">Added advertisements</div>
+              <!-- Table -->
+              <table class="table">
+                <thead class="thead-default">
+                  <tr>
+                    <th class="align-center">#</th>
+                    <th class="align-center">Customer Name</th>
+                    <th class="align-center">Advertisement Type</th>
+
+                  </tr>
+                </thead>
+                <tbody *ngFor="let detail of customerAdvertisementList; let i = index">
+                  <tr>
+                    <td class="align-center">{{i + 1}}</td>
+                    <td class="align-center customer">{{detail.customer}}</td>
+                    <td class="align-center advertisement">{{detail.adType}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+          <!-- End of table which contains the list of Advertisement added -->
+          <div class="row">
+            <div class="pull-left col-md-5 offset-md-1">
+              <button type="button" class="btn btn-custom btn-lg btnadd" (click)="addPayment(adform)" [disabled]="!adform.valid">
+              <span class="glyphicon glyphicon-plus"></span>
+              Add payment
+          </button>
+            </div>
+
+            <div class="pull-right col-md-5 offset-md-1 btn-right" *ngIf="customerAdvertisementList.length > 0">
+              <button type="button" class="btn btn-custom btn-lg btnshow" (click)=showCheckoutAmount()>
+              <span class="glyphicon glyphicon-check"></span>
+              Show prices
+          </button>
+            </div>
+          </div>
+          <hr>
+        </div>
+      </div>
+      <!-- /.col-xs-12 -->
+    </div>
+    <!-- /.row -->
+  </div>
+  <!-- /.container -->
+  <section id="adv" *ngIf="unileverPricing || fordPricing || nikePricing|| applePricing" class="pricingTable">
+    <div class="panel-wrap">
+      <div class="panel panel-default panel-summary">
+        <div class="panel-heading">Pricing List</div>
+        <div class="panel-body">
+          <p *ngIf="unileverPricing" id="unileverPricing">Unilever: {{unileverPricing | currency:'USD':true}}</p>
+          <p *ngIf="fordPricing" id="fordPricing">Ford: {{fordPricing | currency:'USD':true}}</p>
+          <p *ngIf="nikePricing" id="nikePricing">Nike: {{nikePricing | currency:'USD':true}}</p>
+          <p *ngIf="applePricing" id="applePricing">Apple: {{applePricing | currency:'USD':true}}</p>
+        </div>
+      </div>
+    </div>
+  </section>
