@@ -1,5 +1,10 @@
 # Advertisement Pricing Calculator
 
+## Install packages
+Download the source do the following steps
+1. npm install angular-cli@latest -g
+2. npm install 
+
 ## Development server
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
