@@ -23,7 +23,6 @@ export class AppComponent {
   fordPricing: number;
   nikePricing: number;
   applePricing: number;
-  // customers:Array<any>=[{name:"Nike"}];
   public uniLeverCustomerList: Array<CustomerAdvertisementList> = [];
   public fordCustomerList: Array<CustomerAdvertisementList> = [];
   public appleCustomerList: Array<CustomerAdvertisementList> = [];
@@ -35,12 +34,6 @@ export class AppComponent {
     new Customer(AppSettings.customerFord),
     new Customer(AppSettings.customerUnilever)
   ];
-
-  //  customerList: Array<any> = [
-  //   this.customers.forEach((cust)=>{
-  //     new customer(cust)
-  //   })
-  // ];
   adList: Array<Advertisement> = [
     new Advertisement(AppSettings.classic),
     new Advertisement(AppSettings.standout),
@@ -79,19 +72,22 @@ export class AppComponent {
     //reset the list of payments made.
     this.customerAdvertisementList = [];
   }
+  //End of showing the prices
+  // Call Unilever customer pricing
   showUnileverPricing() {
     this.unileverPricing = this.pricingCalculationService.calculateUnileverPricing(this.uniLeverCustomerList);
   }
+  // Call Apple customer pricing
   showApplePricing() {
     this.applePricing = this.pricingCalculationService.calculateApplePricing(this.appleCustomerList);
   }
+  // Call Nike customer pricing
   showNikePricing() {
     this.nikePricing = this.pricingCalculationService.calculateNikePricing(this.nikeCustomerList);
   }
+  // Call Ford customer pricing
   showFordPricing() {
     this.fordPricing = this.pricingCalculationService.calculateFordPricing(this.fordCustomerList);
   }
 
-
-  //End of showing the prices
 }

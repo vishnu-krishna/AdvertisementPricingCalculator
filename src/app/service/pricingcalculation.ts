@@ -9,7 +9,7 @@ export class PricingCalculationService {
     classic = AppSettings.defaultClassic;
     premium = AppSettings.defaultPremium;
     standout = AppSettings.defaultStandout;
-    //calculate the unilever adType prices.
+    //calculate the unilever customer prices.
     calculateUnileverPricing(unilever: Array<CustomerAdvertisementList>) {
         let total = 0;
         let classicCount = 0;
@@ -32,7 +32,7 @@ export class PricingCalculationService {
         total -= this.classic * eligibleDiscount;
         return total;
     }
-    //calculate the apple adType prices
+    //calculate the apple customer prices
     calculateApplePricing(apple: Array<CustomerAdvertisementList>) {
         let total = 0;
         let appleStandout = AppSettings.appleStandoutAmount;
@@ -50,7 +50,7 @@ export class PricingCalculationService {
         })
         return total;
     }
-    //Calculate the nike prices
+    //Calculate the nike customer prices
     calculateNikePricing(nike: Array<CustomerAdvertisementList>) {
         let total = 0;
         let premiumCount = 0;
@@ -80,7 +80,7 @@ export class PricingCalculationService {
         })
         return total;
     }
-    //Calculate the ford prices
+    //Calculate the ford customer prices
     calculateFordPricing(ford: Array<CustomerAdvertisementList>) {
         let total = 0;
         let classicCount = 0;
@@ -97,11 +97,6 @@ export class PricingCalculationService {
             }
             eligibleDiscount = Math.floor(classicCount / AppSettings.fordClassicDeal);
         })
-        // ford.forEach((item, index) => {
-        //     if (item.adType == AppSettings.premium) {
-        //         premiumCount++;
-        //     }
-        // })
         ford.forEach((item, index) => {
             if (item.adType == AppSettings.classic) {
                 total += this.classic;
